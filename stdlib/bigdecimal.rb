@@ -1,6 +1,6 @@
 class BigDecimal < Numeric; end
 
-require 'js'
+require 'js/raw'
 require 'bigdecimal/bignumber'
 
 module Kernel
@@ -53,7 +53,7 @@ class BigDecimal < Numeric
   attr_reader :bignumber
 
   def initialize(initial, digits = 0)
-    @bignumber = JS.new(BigNumber, initial)
+    @bignumber = JS::Raw.new(BigNumber, initial)
   end
 
   def ==(other)

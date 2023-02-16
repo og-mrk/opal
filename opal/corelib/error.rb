@@ -305,6 +305,19 @@ class ::KeyError
 end
 
 module ::JS
-  class Error
+  module Raw
+    class Error
+    end
+  end
+
+  def self.const_missing(const)
+    if const == :Error
+      warn '[Opal] JS::Error class has been renamed to JS::Raw::Error and will change semantics in Opal 2.0. ' \
+           'To ensure forward compatibility, please update your rescue clauses.'
+
+      ::JS::Raw::Error
+    else
+      super
+    end
   end
 end
