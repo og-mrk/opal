@@ -1859,6 +1859,7 @@
     return jsid_cache[name] || (jsid_cache[name] = '$' + name);
   }
   Opal.jsid = $jsid;
+  Opal.sym = $jsid;
 
   function $prepend(first, second) {
     if (!second.$$is_array) second = $slice(second);
